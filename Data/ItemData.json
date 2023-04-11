@@ -1,0 +1,182 @@
+{
+    "Burger":{
+        "Name": "Pice of burger",
+        "ItemCategory": "Garbage",
+        "GarbageType": "Organic",
+        "StackSize": 99,
+        "Description": "Small piece of bread once used in cooking. It might still taste good."
+    },
+    "Cabbage":{
+        "Name": "Cabbage",
+        "ItemCategory": "Garbage",
+        "GarbageType": "Organic",
+        "StackSize": 99,
+        "Description": "Most delicious vegetable in the world. It start to change into black cabbage. But It could still edible don't you think so?"
+    },
+    "Mama":{
+        "Name": "Leftover mama cup",
+        "ItemCategory": "Garbage",
+        "GarbageType": "General",
+        "StackSize": 99,
+        "Description": "Someone ate all the noodles, so it is now just an empty cup. I think no one want to use it anymore."
+    },
+    "Straw":{
+        "Name": "Straw",
+        "ItemCategory": "Garbage",
+        "GarbageType": "General",
+        "StackSize": 99,
+        "Description": "Used straw, made of plastic. I can still see soda liquid drop inside this. So dirty!"
+    },
+    "Snack":{
+        "Name": "Snack pack",
+        "ItemCategory": "Garbage",
+        "GarbageType": "General",
+        "StackSize": 99,
+        "Description": "It might sound good to be able to eat some snack, but there's nothing inside. What a pity."
+    },
+    "Can":{
+        "Name": "Empty can",
+        "ItemCategory": "Garbage",
+        "GarbageType": "Recycle",
+        "StackSize": 99,
+        "Description": "A can made of aluminium. Seem to be in good condition for keeping some water."
+    },
+    "Milk":{
+        "Name": "Milk carton",
+        "ItemCategory": "Garbage",
+        "GarbageType": "Recycle",
+        "StackSize": 99,
+        "Description": "A carton once stored some milk. Could the package still be use for something?"
+    },
+    "WaterBottle":{
+        "Name": "Plastic water bottle",
+        "ItemCategory": "Garbage",
+        "GarbageType": "Recycle",
+        "StackSize": 99,
+        "Description": "What a fine shape of plastic bottle, I think it can still be good for use."
+    },
+    "SodaBottle":{
+        "Name": "Plastic soda bottle",
+        "ItemCategory": "Garbage",
+        "GarbageType": "Recycle",
+        "StackSize": 99,
+        "Description": "What a fine shape of plastic bottle, I think it can still be good for use."
+    },
+    "Mouse":{
+        "Name": "Broken mouse",
+        "ItemCategory": "Garbage",
+        "GarbageType": "Recycle",
+        "StackSize": 99,
+        "Description": "Computer mouse with plastic and metal material inside. I wish I have my pc with me."
+    },
+    "Spraycan":{
+        "Name": "Spray can",
+        "ItemCategory": "Garbage",
+        "GarbageType": "Hazardous",
+        "StackSize": 99,
+        "Description": "What a smell. I can still smell the some chemical inside this can. I should take it carefully."
+    },
+    "Charger":{
+        "Name": "Broken charger",
+        "ItemCategory": "Garbage",
+        "GarbageType": "Hazardous",
+        "StackSize": 99,
+        "Description": "I have a dream to become TheFlash, I've heard that if I can withstand the lighning then I can become one."
+    },
+    "Battery":{
+        "Name": "Battery",
+        "ItemCategory": "Garbage", 
+        "GarbageType": "Hazardous",
+        "StackSize": 99,
+        "Description": "I think there's no point of using this run out battery. My mom told me to always take care of this trash since It has chemical inside that is not good for the her garden."
+    },
+    "Wineglass":{
+        "Name": "Broken glass",
+        "ItemCategory": "Garbage",
+        "GarbageType": "Hazardous",
+        "StackSize": 99,
+        "Description": "I think we should have a specialy take care of these glass, It may hurt you if you don't look carefully."
+    },
+    "Tissue":{
+        "Name": "Dirty tissue",
+        "ItemCategory": "Garbage",
+        "GarbageType": "Infectious",
+        "StackSize": 99,
+        "Description": "Used tissue. It may attached with some virus or dirtiness. I don't think I can reuse it."
+    },
+    "Atk":{
+        "Name": "Infected ATK",
+        "ItemCategory": "Garbage",                              
+        "GarbageType": "Infectious",
+        "StackSize": 99,
+        "Description": "It was used by someone to detect covid-19 virus. It may still have some virus, I should be careful or else I could got this virus."
+    },
+    "mystery_key_segment":{
+        "Name": "Mystery Key Segment",
+        "ItemCategory": "QuestItem",
+        "StackSize": 1,
+        "Description": "Part of the key that used to unlock the unknown door. Once all five key segments are obtained, they must be brought together to the form the complete key."
+    },
+    "basement_key":{
+        "Name": "Basement key",
+        "ItemCategory": "QuestItem",
+        "StackSize": 1,
+        "Description": "Deep within the depths of the factory lies a key that unlocks the mysterious door. This key is a shimmering crystal imbued with the power to unlock the barries between worlds."
+    },
+    "Broom":{
+        "Name": "Broom",
+        "ItemCategory": "Weapon",
+        "StackSize": 1,
+        "Description": "The broom which is more than just a tool for cleaning. It has long history of being used in spiritual and mystical practices.",
+		"Damage": 2
+    },
+	"Vacuum":{
+        "Name": "Vacumm",
+        "ItemCategory": "Weapon",
+        "StackSize": 1,
+        "Description": "The vacuum is a sleek and powerful machine, capable of transforming even the messiest of spaces into a pristone oasis. ",
+		"Damage": 4
+    },
+    "Dustpan":{
+        "Name": "Dustpan",
+        "ItemCategory": "Weapon",
+        "StackSize": 1,
+        "Description": "Mystical artifact of the cleaning realm, is an enchanted tool with an otherworldly aura. Crafted by ancient wizards.",
+		"Damage": 2
+    },
+    "FloorMop":{
+        "Name": "Floor mop",
+        "ItemCategory": "Weapon",
+        "StackSize": 1,
+        "Description": "Wondrous tool of enchanted fibers and mystical powers! With its long and slender frame, it glides across the floor like a nimble adventurer.",
+		"Damage": 3
+    },
+    "Whisk":{
+        "Name": "Whisk",
+        "ItemCategory": "Weapon",
+        "StackSize": 1,
+        "Description": "A magnificent tool of culinary magic! With its shimmering wires and graceful curves, it's like a wand in the hands of a master cleric.",
+		"Damage": 1
+    },
+	"gloveFabric":{
+        "Name": "Fabric glove",
+        "ItemCategory": "Armor",
+        "StackSize": 1,
+        "Description": "This glove is not just a normal cleaning glove. It is a reminder that even the simplest of accessories can have a powerful impact on our lives.",
+		"HP": 3
+    },
+	"gloveLeather":{
+        "Name": "Leather glove",
+        "ItemCategory": "Armor",
+        "StackSize": 1,
+        "Description": "This glove is a tool for those who work hard and play hard, offering protection and comfort in even the toughest of environments.",
+		"HP": 6
+    },
+    "gloveRubber":{
+        "Name": "Rubber glove",
+        "ItemCategory": "Armor",
+        "StackSize": 1,
+        "Description": "This glove is true champion when it comes to keeping your hands safe and clean from special spider curse.",
+		"HP": 8
+    }
+}

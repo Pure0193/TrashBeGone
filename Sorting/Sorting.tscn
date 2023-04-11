@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sorting/SortingMechanic.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sorting/SortingPoint.gd" type="Script" id=2]
+[ext_resource path="res://assets/Sorting_Point.png" type="Texture" id=13]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 64, 12 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 80, 36 )
+
+[node name="SortingScene" type="Node2D"]
+
+[node name="Sorting" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="SortingPoint" type="KinematicBody2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="Sprite" type="Sprite" parent="SortingPoint"]
+texture = ExtResource( 13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SortingPoint"]
+position = Vector2( 0, -12 )
+shape = SubResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="SortingPoint"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SortingPoint/Area2D"]
+position = Vector2( 0, -4 )
+shape = SubResource( 4 )

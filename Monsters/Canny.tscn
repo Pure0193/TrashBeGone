@@ -1,0 +1,106 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Monsters/CannySprite.PNG" type="Texture" id=1]
+[ext_resource path="res://Hitboxes/Hurtbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Monsters/Canny.gd" type="Script" id=3]
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Monsters/DetectionZone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hitboxes/Hitbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Monsters/SoftCollision.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Monsters/WanderingController.tscn" type="PackedScene" id=8]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 50, 65 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 50, 0, 50, 65 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 100, 0, 50, 65 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 50, 0, 50, 65 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 6.0
+height = 4.0
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 11.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 9.0
+
+[sub_resource type="CapsuleShape2D" id=11]
+radius = 4.0
+height = 2.0
+
+[node name="Canny" type="KinematicBody2D"]
+collision_layer = 16
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 7, -7 )
+frames = SubResource( 7 )
+frame = 3
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
+shape = SubResource( 2 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 2 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, -5 )
+shape = SubResource( 8 )
+
+[node name="Stats" parent="." instance=ExtResource( 4 )]
+max_hp = 4
+mon_dmg = 1
+
+[node name="DectectionZone" parent="." instance=ExtResource( 5 )]
+
+[node name="CollisionShape2D" parent="DectectionZone" index="0"]
+modulate = Color( 0.266667, 0.980392, 0.258824, 0.588235 )
+shape = SubResource( 9 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 6 )]
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, -4 )
+shape = SubResource( 10 )
+
+[node name="SoftCollision" parent="." instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+position = Vector2( 0, -2 )
+shape = SubResource( 11 )
+
+[node name="WanderingController" parent="." instance=ExtResource( 8 )]
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="dead" from="Stats" to="." method="_on_Stats_dead"]
+
+[editable path="Hurtbox"]
+[editable path="DectectionZone"]
+[editable path="Hitbox"]
+[editable path="SoftCollision"]

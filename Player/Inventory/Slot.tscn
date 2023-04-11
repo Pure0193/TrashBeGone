@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/Inventory/Slot.gd" type="Script" id=1]
+[ext_resource path="res://Player/Inventory/Inventory_Slot_Default.PNG" type="Texture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 17, 17 )
+
+[node name="Slot" type="Panel"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_Slot_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Slot_mouse_exited"]

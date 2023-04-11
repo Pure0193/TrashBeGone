@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sound/Effects/collect_drop.wav" type="AudioStream" id=1]
+[ext_resource path="res://Item/PickUpZone.gd" type="Script" id=2]
+[ext_resource path="res://Item/Wineglass.png" type="Texture" id=3]
+[ext_resource path="res://Item/WineDrop.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 28 )
+
+[node name="WineDrop" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Texture" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="PickUpZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpZone"]
+position = Vector2( 0, 4 )
+shape = SubResource( 1 )
+
+[node name="PickUpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = 24.0
+max_distance = 1e+12
+
+[connection signal="body_entered" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_body_entered"]
+[connection signal="body_exited" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_body_exited"]
