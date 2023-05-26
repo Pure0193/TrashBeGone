@@ -59,7 +59,7 @@ func _on_Slot_mouse_entered():
 	slot_index = int(slot_index) - 1
 #	print(slot_index)
 	tooltip_instance.slot = slot_index
-	tooltip_instance.rect_position = get_parent().get_global_position() + Vector2(145, -25)
+	tooltip_instance.rect_position = get_parent().get_global_position() + Vector2(150, -25)
 	
 	add_child(tooltip_instance)
 	yield(get_tree().create_timer(0.3), "timeout")

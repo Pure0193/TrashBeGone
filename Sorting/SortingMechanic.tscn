@@ -1,16 +1,13 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Sorting/Recycle Bin.gd" type="Script" id=1]
-[ext_resource path="res://Sorting/Sort_Drag_Burger.gd" type="Script" id=2]
 [ext_resource path="res://Sorting/Organic Bin.gd" type="Script" id=3]
 [ext_resource path="res://Sorting/SortingMechanic.gd" type="Script" id=4]
-[ext_resource path="res://Sorting/Sort_Drag_can.gd" type="Script" id=5]
 [ext_resource path="res://Sorting/Bins/General.png" type="Texture" id=6]
 [ext_resource path="res://Sorting/Bins/Organic.png" type="Texture" id=7]
 [ext_resource path="res://Sorting/Bins/Dangerous.png" type="Texture" id=8]
 [ext_resource path="res://Sorting/Bins/Recycle.png" type="Texture" id=9]
 [ext_resource path="res://Sorting/Bins/Harzardous.PNG" type="Texture" id=10]
-[ext_resource path="res://Item/Item.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Player/Inventory/Inventory.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/WhiteBG.PNG" type="Texture" id=13]
 [ext_resource path="res://Sorting/Harzardous.gd" type="Script" id=14]
@@ -103,16 +100,6 @@ texture = ExtResource( 10 )
 position = Vector2( 15, 41 )
 shape = SubResource( 2 )
 
-[node name="Can" parent="SortScene" instance=ExtResource( 11 )]
-visible = false
-position = Vector2( 120, 176 )
-script = ExtResource( 5 )
-
-[node name="Burger" parent="SortScene" instance=ExtResource( 11 )]
-visible = false
-position = Vector2( 157, 176 )
-script = ExtResource( 2 )
-
 [node name="TextBox" type="TextureRect" parent="."]
 visible = false
 margin_left = 368.0
@@ -137,6 +124,3 @@ text = "Good"
 
 [node name="Timer" type="Timer" parent="TextBox"]
 wait_time = 0.5
-
-[connection signal="input_event" from="SortScene/Can" to="SortScene/Can" method="_on_Can_input_event"]
-[connection signal="input_event" from="SortScene/Burger" to="SortScene/Burger" method="_on_Burger_input_event"]

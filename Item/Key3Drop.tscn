@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Item/PickUpZone.gd" type="Script" id=1]
 [ext_resource path="res://Sound/Effects/collect_drop.wav" type="AudioStream" id=2]
 [ext_resource path="res://Item/Key3.png" type="Texture" id=3]
+[ext_resource path="res://Item/Key3Drop.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 28 )
 
 [node name="Key3Drop" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="Texture" type="Sprite" parent="."]
 texture = ExtResource( 3 )

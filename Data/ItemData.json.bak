@@ -1,6 +1,6 @@
 {
     "Burger":{
-        "Name": "Pice of burger",
+        "Name": "Piece of burger",
         "ItemCategory": "Garbage",
         "GarbageType": "Organic",
         "StackSize": 99,
@@ -111,15 +111,39 @@
         "StackSize": 99,
         "Description": "It was used by someone to detect covid-19 virus. It may still have some virus, I should be careful or else I could got this virus."
     },
-    "mystery_key_segment":{
-        "Name": "Mystery Key Segment",
-        "ItemCategory": "QuestItem",
+    "mystery_key_segment1":{
+        "Name": "Key Segment",
+        "ItemCategory": "Quest",
+        "StackSize": 1,
+        "Description": "Part of the key that used to unlock the unknown door. Once all five key segments are obtained, they must be brought together to the form the complete key."
+    },
+	"mystery_key_segment2":{
+        "Name": "Key Segment",
+        "ItemCategory": "Quest",
+        "StackSize": 1,
+        "Description": "Part of the key that used to unlock the unknown door. Once all five key segments are obtained, they must be brought together to the form the complete key."
+    },
+	"mystery_key_segment3":{
+        "Name": "Key Segment",
+        "ItemCategory": "Quest",
+        "StackSize": 1,
+        "Description": "Part of the key that used to unlock the unknown door. Once all five key segments are obtained, they must be brought together to the form the complete key."
+    },
+	"mystery_key_segment4":{
+        "Name": "Key Segment",
+        "ItemCategory": "Quest",
+        "StackSize": 1,
+        "Description": "Part of the key that used to unlock the unknown door. Once all five key segments are obtained, they must be brought together to the form the complete key."
+    },
+	"mystery_key_segment5":{
+        "Name": "Key Segment",
+        "ItemCategory": "Quest",
         "StackSize": 1,
         "Description": "Part of the key that used to unlock the unknown door. Once all five key segments are obtained, they must be brought together to the form the complete key."
     },
     "basement_key":{
         "Name": "Basement key",
-        "ItemCategory": "QuestItem",
+        "ItemCategory": "Quest",
         "StackSize": 1,
         "Description": "Deep within the depths of the factory lies a key that unlocks the mysterious door. This key is a shimmering crystal imbued with the power to unlock the barries between worlds."
     },
@@ -162,7 +186,7 @@
         "Name": "Fabric glove",
         "ItemCategory": "Armor",
         "StackSize": 1,
-        "Description": "This glove is not just a normal cleaning glove. It is a reminder that even the simplest of accessories can have a powerful impact on our lives, providing us with the comfort, protection",
+        "Description": "This glove is not just a normal cleaning glove. It is a reminder that even the simplest of accessories can have a powerful impact on our lives.",
 		"HP": 3
     },
 	"gloveLeather":{

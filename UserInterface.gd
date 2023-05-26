@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 onready var DeathScreen = $DeathScreen
+onready var HelpScreen = $HelpScreen
 
 const SAVE_FILE = "user://save_file.save"
 var game_data = {}
@@ -57,4 +58,4 @@ func _on_BackpackButton_pressed():
 
 
 func _on_HelpButton_pressed():
-	pass # Replace with function body.
+	HelpScreen.visible = !HelpScreen.visible

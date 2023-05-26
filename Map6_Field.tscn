@@ -88,6 +88,11 @@ position = Vector2( 584, 24 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
+limit_left = 0
+limit_top = -15
+limit_right = 688
+limit_bottom = 480
+editor_draw_limits = true
 
 [node name="MonsterSpawn4" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 109, 106 )

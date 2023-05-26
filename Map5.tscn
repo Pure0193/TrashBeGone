@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Tiles/Road_TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Tiles/Tree.PNG" type="Texture" id=2]
@@ -9,6 +9,12 @@
 [ext_resource path="res://assets/Sign-leftright.PNG" type="Texture" id=7]
 [ext_resource path="res://assets/Sign-updown.PNG" type="Texture" id=8]
 [ext_resource path="res://Sound/ost_townbg.wav" type="AudioStream" id=9]
+[ext_resource path="res://NPC/Stranger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://NPC/LastJoseph.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ToLastBoss.gd" type="Script" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 28, 28 )
 
 [node name="Map5" type="Node2D"]
 script = ExtResource( 6 )
@@ -192,6 +198,35 @@ position = Vector2( 224, 1048 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
+limit_left = -265
+limit_top = -195
+limit_right = 681
+limit_bottom = 1086
+editor_draw_limits = true
+
+[node name="Stranger" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 272, 928 )
+progress_required = 7
+
+[node name="Dialogue" parent="YSort/Stranger" index="2"]
+dialogues_file = "res://Dialogues/json/Factory1.json"
+
+[node name="Stranger2" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 304, -24 )
+progress_required = 8
+
+[node name="Dialogue" parent="YSort/Stranger2" index="2"]
+dialogues_file = "res://Dialogues/json/Factory2.json"
+
+[node name="Stranger3" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 304, -24 )
+progress_required = 10
+
+[node name="Dialogue" parent="YSort/Stranger3" index="2"]
+dialogues_file = "res://Dialogues/json/Factory3.json"
+
+[node name="LastJoseph" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 320, 72 )
 
 [node name="FromMap5" parent="." instance=ExtResource( 3 )]
 position = Vector2( 224, 1080 )
@@ -234,6 +269,16 @@ map_name = "Map6_Field"
 [node name="ToMap5-1" type="Position2D" parent="."]
 position = Vector2( 2, 1058 )
 
+[node name="ToLastBoss" type="Area2D" parent="."]
+position = Vector2( 216, 0 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToLastBoss"]
+position = Vector2( 4, 4 )
+shape = SubResource( 1 )
+
 [node name="UserInterface" parent="." instance=ExtResource( 4 )]
 
 [node name="Sign-leftright" type="Sprite" parent="."]
@@ -254,11 +299,16 @@ volume_db = -8.0
 autoplay = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2( 4, -21 )
 build_mode = 1
 polygon = PoolVector2Array( 468, 1107, 469, 914, 501, 916, 502, 884, 661, 883, 663, 769, 500, 770, 501, 736, 468, 737, 468, 689, 681, 691, 679, 625, 388, 625, 388, 738, 278, 738, 277, 595, 358, 596, 357, 496, 275, 496, 279, 288, 402, 293, 401, -174, 33, -171, 35, 292, 161, 292, 163, 499, 82, 498, 83, 595, 163, 596, 163, 739, 37, 738, 38, 627, -269, 626, -268, 693, -62, 693, -62, 738, -78, 739, -76, 771, -236, 771, -236, 883, -78, 884, -76, 917, -45, 917, -44, 1108, 37, 1107, 37, 916, 148, 915, 148, 981, 179, 979, 180, 1108, 262, 1107, 262, 979, 296, 979, 294, 915, 387, 916, 388, 1108, 390, 1128, -313, 1126, -305, -164, -305, -303, 704, -299, 691, 1140, 467, 1129 )
 
+[editable path="YSort/Stranger"]
+[editable path="YSort/Stranger2"]
+[editable path="YSort/Stranger3"]
 [editable path="FromMap5-3"]
 [editable path="FromMap5-4"]
+[editable path="UserInterface"]

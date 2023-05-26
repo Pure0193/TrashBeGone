@@ -5,6 +5,7 @@ onready var price = $Price
 onready var sprite = $Sprite
 onready var coin_sprite = $Coin
 onready var sold_out = $SoldOut
+onready var itemName = $ItemName
 var item_name
 var status
 
@@ -16,6 +17,7 @@ func _ready():
 	db.path = db_name
 	db.open_db()
 	item_name = get_name()
+	itemName.text = String(JsonData.item_data[item_name]["Name"])
 	db.query("select Avaliable from Shop where ItemName = \"" + item_name + "\";")
 	status = db.query_result[0]["Avaliable"]
 	if status == "True":

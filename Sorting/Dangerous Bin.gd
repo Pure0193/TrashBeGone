@@ -1,0 +1,39 @@
+extends Area2D
+
+const ItemClass = preload("res://Item.gd")
+const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
+var db
+var db_name = "res://DataStore/test"
+
+
+func _ready():
+	db = SQLite.new()
+	db.path = db_name
+	db.open_db()
+
+func readDB():
+	var tableName = "player"
+	db.query("select Coin from " + tableName + ";")
+	return db.query_result[0]["Coin"]
+
+func increase_coin():
+	var tableName = "player"
+	var new_coin = readDB() + get_parent().get_node("Inventory").hold_item.item_quantity
+	db.update_rows(tableName, "id=1", {"Coin":new_coin})
+
+func decrease_coin():
+	var tableName = "player"
+	if readDB() > 0:
+		var new_coin = readDB() -1
+		db.update_rows(tableName, "id=1", {"Coin":new_coin})
+
+func _input(event):
+	if event.is_action_released("ui_touch") && is_visible_in_tree():
+		for _a in get_overlapping_areas():
+			if _a.get_item_type(_a.item_name) == "Garbage":
+				if _a.get_garbage_type(_a.item_name) == "Dangerous":
+					increase_coin()
+					get_parent().get_node("Inventory").hold_null()
+					_a.queue_free()
+				else:
+					decrease_coin()

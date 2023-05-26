@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Stats.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Monsters/DetectionZone.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [sub_resource type="Animation" id=12]
 resource_name = "CardgonAttack"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -28,38 +29,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=1]
 resource_name = "CardgonIdle"
 length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "PikaAttack"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 6, 7 ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "PikaIdle"
-length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -138,13 +108,12 @@ vframes = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/CardgonAttack = SubResource( 12 )
 anims/CardgonIdle = SubResource( 1 )
-anims/PikaAttack = SubResource( 2 )
-anims/PikaIdle = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 5 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -158,7 +127,7 @@ collision_layer = 8
 shape = SubResource( 8 )
 
 [node name="Stats" parent="." instance=ExtResource( 1 )]
-max_hp = 70
+max_hp = 20
 mon_dmg = 2
 
 [node name="DectectionZone" parent="." instance=ExtResource( 2 )]

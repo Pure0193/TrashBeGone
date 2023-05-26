@@ -131,3 +131,9 @@ func display_dmg():
 
 func display_maxHP():
 	MaxHP_Label.text = String("Max Hp: ") + String(stats.max_hp)
+
+func remove_spec_item(index):
+	var slots = inv_slot.get_children()
+	for i in range(slots.size()):
+		slots[i].slot_index = i
+	slots[index].remove_child(null)

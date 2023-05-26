@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Tiles/Road_TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Tiles/Bush3.PNG" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Levels.gd" type="Script" id=9]
 [ext_resource path="res://assets/Sign-left.PNG" type="Texture" id=10]
 [ext_resource path="res://Sound/ost_townbg.wav" type="AudioStream" id=11]
+[ext_resource path="res://Monsters/Boss/DinoToy.tscn" type="PackedScene" id=12]
 
 [node name="Map6_Boss2" type="Node2D"]
 script = ExtResource( 9 )
@@ -129,6 +130,11 @@ position = Vector2( 584, 24 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
+limit_left = 0
+limit_top = -14
+limit_right = 689
+limit_bottom = 481
+editor_draw_limits = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 visible = false
@@ -156,3 +162,6 @@ texture = ExtResource( 10 )
 stream = ExtResource( 11 )
 volume_db = -8.0
 autoplay = true
+
+[node name="DinoToy" parent="." instance=ExtResource( 12 )]
+position = Vector2( 152, 288 )

@@ -16,11 +16,13 @@ const ItemClass = preload("res://Item.gd")
 #	db.query("select Coin from " + tableName + ";")
 #	return db.query_result[0]["Coin"]
 
+
 func increase_coin():
 #	var tableName = "player"
 #	var new_coin = readDB() + get_parent().get_node("Inventory").hold_item.item_quantity
 #	db.update_rows(tableName, "id=1", {"Coin":new_coin})
-	PlayerStats.set_coin(1 * get_parent().get_node("Inventory").hold_item.item_quantity)
+	PlayerStats.set_coin(1 * get_parent().get_parent().get_node("Inventory").hold_item.item_quantity)
+	WorldSoundEffect.CorrectSortSound()
 
 func decrease_coin():
 #	var tableName = "player"
@@ -39,6 +41,7 @@ func _input(event):
 					get_parent().get_parent().get_node("Inventory").hold_null()
 					_a.queue_free()
 				else:
+					WorldSoundEffect.WrongSortSound()
 					if _a.item_quantity > 1:
 						_a.item_quantity -= 1
 						_a.refresh_item()

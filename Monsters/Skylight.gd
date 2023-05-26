@@ -63,7 +63,7 @@ func state_change(state_list):
 	return state_list.pop_front()
 
 func _on_Hurtbox_area_entered(area):
-	stats.hp -= area.damage
+	stats.hp -= PlayerStats.damage
 	knockback = area.knockback_vector * 150
 
 func _on_Stats_dead():

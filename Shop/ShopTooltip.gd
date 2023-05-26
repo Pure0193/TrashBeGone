@@ -12,6 +12,10 @@ const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var db
 var db_name = "res://DataStore/test"
 
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		queue_free()
+
 func _ready():
 	if origin == "Shop":
 		valid = true

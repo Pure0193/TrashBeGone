@@ -11,6 +11,12 @@ var inventory = {
 #	3: ["Vacuum", 1],
 #	4: ["gloveFabric", 1],
 #	5: ["gloveLeather", 1]
+#	0: ["Key1", 1],
+#	1: ["Key2", 1],
+#	2: ["Key3", 1],
+#	3: ["Key4", 1],
+#	4: ["Key5", 1],
+	0: ["basement_key", 1]
 }
 
 
@@ -30,7 +36,6 @@ func add_item(item_name, item_quantity):
 		if inventory.has(i) == false:
 			inventory[i] = [item_name, item_quantity]
 			return
-
 
 func add_item_empty_slot(item: ItemClass, slot: SlotClass):
 	inventory[slot.slot_index] = [item.item_name, item.item_quantity]

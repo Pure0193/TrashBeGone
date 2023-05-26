@@ -247,9 +247,6 @@ texture = ExtResource( 7 )
 position = Vector2( 600, 304 )
 progress_required = 2
 
-[node name="Dialogue" parent="YSort/Stranger" index="2"]
-visible = false
-
 [node name="Buliding2" type="Sprite" parent="YSort"]
 position = Vector2( 73, 262 )
 texture = ExtResource( 9 )
@@ -310,6 +307,7 @@ autoplay = true
 [node name="UserInterface" parent="." instance=ExtResource( 13 )]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 build_mode = 1

@@ -1,0 +1,196 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hitboxes/Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Monsters/DetectionZone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hitboxes/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Monsters/WanderingController.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Monsters/SoftCollision.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Monsters/Boss/Boss4_dinotoy.png" type="Texture" id=7]
+[ext_resource path="res://Monsters/Boss/DinoToy.gd" type="Script" id=8]
+
+[sub_resource type="Animation" id=17]
+resource_name = "DinoAttack"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "DinoIdle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "DinoWalk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "DinoAttack"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "DinoIdle"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "DinoWalk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachine" id=8]
+states/DinoAttack/node = SubResource( 18 )
+states/DinoAttack/position = Vector2( 811.871, 157 )
+states/DinoIdle/node = SubResource( 19 )
+states/DinoIdle/position = Vector2( 622.871, 90 )
+states/DinoWalk/node = SubResource( 20 )
+states/DinoWalk/position = Vector2( 811.871, 31 )
+transitions = [ "DinoIdle", "DinoWalk", SubResource( 21 ), "DinoWalk", "DinoIdle", SubResource( 22 ), "DinoIdle", "DinoAttack", SubResource( 23 ), "DinoAttack", "DinoIdle", SubResource( 24 ), "DinoWalk", "DinoAttack", SubResource( 25 ), "DinoAttack", "DinoWalk", SubResource( 26 ) ]
+start_node = "DinoIdle"
+graph_offset = Vector2( 106.871, 0 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 26.0
+height = 4.0
+
+[sub_resource type="CapsuleShape2D" id=11]
+radius = 42.0
+height = 0.0
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 160.0
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 37.2156
+
+[sub_resource type="CapsuleShape2D" id=14]
+radius = 27.0
+height = 2.0
+
+[node name="DinoToy" type="KinematicBody2D"]
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+offset = Vector2( 15, 0 )
+hframes = 4
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/DinoAttack = SubResource( 17 )
+anims/DinoIdle = SubResource( 15 )
+anims/DinoWalk = SubResource( 16 )
+anims/RESET = SubResource( 5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2, 2 )
+shape = SubResource( 10 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource( 11 )
+
+[node name="Stats" parent="." instance=ExtResource( 1 )]
+max_hp = 20
+mon_dmg = 2
+
+[node name="DectectionZone" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="DectectionZone" index="0"]
+modulate = Color( 0.266667, 0.980392, 0.258824, 0.588235 )
+shape = SubResource( 12 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 2 )]
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, 1 )
+shape = SubResource( 13 )
+
+[node name="SoftCollision" parent="." instance=ExtResource( 6 )]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+shape = SubResource( 14 )
+
+[node name="WanderingController" parent="." instance=ExtResource( 5 )]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="dead" from="Stats" to="." method="_on_Stats_dead"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Hurtbox"]
+[editable path="DectectionZone"]
+[editable path="Hitbox"]
+[editable path="SoftCollision"]

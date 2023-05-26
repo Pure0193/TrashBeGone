@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tiles/Road_TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Tiles/Tree.PNG" type="Texture" id=2]
 [ext_resource path="res://Sound/ost_townbg.wav" type="AudioStream" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NPC/Stranger.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Monsters/Boss/Joseph.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/UserInterface.tscn" type="PackedScene" id=7]
 
 [node name="Map11_LastBoss" type="Node2D"]
 
@@ -740,6 +744,31 @@ texture = ExtResource( 2 )
 position = Vector2( 280.778, 47.969 )
 texture = ExtResource( 2 )
 
+[node name="Player" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 377.778, 645.469 )
+
+[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
+current = true
+limit_left = 23
+limit_top = -16
+limit_right = 688
+limit_bottom = 1073
+editor_draw_limits = true
+
+[node name="Stranger" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 409.778, 429.469 )
+progress_required = 11
+
+[node name="Dialogue" parent="YSort/Stranger" index="2"]
+dialogues_file = "res://Dialogues/json/LastBoss1.json"
+
+[node name="Stranger2" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 313.778, -266.531 )
+progress_required = 12
+
+[node name="Dialogue" parent="YSort/Stranger2" index="2"]
+dialogues_file = "res://Dialogues/json/LastBoss2.json"
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 visible = false
 
@@ -753,3 +782,11 @@ polygon = PoolVector2Array( 527, 1071, 527, 1103, 641, 1102, 642, 1071 )
 stream = ExtResource( 3 )
 volume_db = -8.0
 autoplay = true
+
+[node name="Joseph" parent="." instance=ExtResource( 6 )]
+position = Vector2( 344, 200 )
+
+[node name="UserInterface" parent="." instance=ExtResource( 7 )]
+
+[editable path="YSort/Stranger"]
+[editable path="YSort/Stranger2"]

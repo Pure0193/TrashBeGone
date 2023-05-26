@@ -502,7 +502,7 @@ autoplay = true
 [node name="UserInterface" parent="." instance=ExtResource( 12 )]
 
 [node name="SortingScene" parent="." instance=ExtResource( 15 )]
-position = Vector2( 408, -24 )
+position = Vector2( 424, 40 )
 
 [node name="Camera2" type="Camera2D" parent="SortingScene"]
 position = Vector2( 232, 160 )

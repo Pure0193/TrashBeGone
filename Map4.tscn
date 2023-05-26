@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Tiles/Road_TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Tiles/Tree.PNG" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Levels.gd" type="Script" id=7]
 [ext_resource path="res://assets/Sign-right.PNG" type="Texture" id=8]
 [ext_resource path="res://Sound/ost_townbg.wav" type="AudioStream" id=9]
+[ext_resource path="res://NPC/Stranger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Monsters/Boss/Cardgon.tscn" type="PackedScene" id=11]
 
 [node name="Map4" type="Node2D"]
 script = ExtResource( 7 )
@@ -148,6 +150,28 @@ position = Vector2( 192, 424 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
+limit_left = 0
+limit_top = -18
+limit_right = 1408
+limit_bottom = 465
+editor_draw_limits = true
+
+[node name="Stranger" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 232, 328 )
+progress_required = 5
+
+[node name="Dialogue" parent="YSort/Stranger" index="2"]
+dialogues_file = "res://Dialogues/json/FrontofFactory.json"
+
+[node name="Stranger2" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 728, 200 )
+progress_required = 7
+
+[node name="Dialogue" parent="YSort/Stranger2" index="2"]
+dialogues_file = "res://Dialogues/json/FrontofFactory2.json"
+
+[node name="Cardgon" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 560, 248 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 visible = false
@@ -191,4 +215,6 @@ stream = ExtResource( 9 )
 volume_db = -8.0
 autoplay = true
 
+[editable path="YSort/Stranger"]
+[editable path="YSort/Stranger2"]
 [editable path="ToMap5"]

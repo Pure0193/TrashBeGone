@@ -22,6 +22,8 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var animationTimer = $Timer
 
 func _ready():
+	if PlayerStats.progress < 5 || PlayerStats.progress > 6:
+		self.queue_free()
 	animationTree.active = true
 	state_change([IDLE, WANDERING])
 
@@ -68,19 +70,21 @@ func state_change(state_list):
 	return state_list.pop_front()
 
 func _on_Hurtbox_area_entered(area):
-	stats.hp -= area.damage
+	stats.hp -= PlayerStats.damage
 	knockback = area.knockback_vector * 250
 
 func _on_Stats_dead():
 	var cardgon_drop = _cardgon_drop.instance()
 	get_parent().add_child(cardgon_drop)
 	cardgon_drop.global_position = self.global_position
+	PlayerStats.next_progress()
+	get_parent().get_node("Stranger2").visible = true
 	queue_free()
 
 func _on_Hitbox_area_entered(area):
-	animationPlayer.play("CardgonAttack")
+	animationState.travel("CardgonAttack")
 	animationTimer.start()
 
 
 func _on_Timer_timeout():
-	animationPlayer.play("CardgonIdle")
+	animationState.travel("CardgonIdle")

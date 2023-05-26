@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Tiles/Road_TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Tiles/Tree.PNG" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/Sign-right.PNG" type="Texture" id=10]
 [ext_resource path="res://Monsters/MonsterSpawn.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Sound/ost_townbg.wav" type="AudioStream" id=12]
+[ext_resource path="res://NPC/Stranger.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.0784, 22.9673 )
@@ -114,6 +115,8 @@ scale = Vector2( 1.46575, 1.46575 )
 texture = ExtResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="YSort/ShopSprite"]
+collision_layer = 32
+collision_mask = 2
 script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/ShopSprite/Area2D"]
@@ -131,6 +134,11 @@ position = Vector2( 224, 48 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
+limit_left = 0
+limit_top = -16
+limit_right = 688
+limit_bottom = 465
+editor_draw_limits = true
 
 [node name="MonsterSpawn4" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 304, 387 )
@@ -140,6 +148,13 @@ position = Vector2( 660, 80 )
 
 [node name="MonsterSpawn6" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 25, 390 )
+
+[node name="Stranger" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 608, 240 )
+progress_required = 4
+
+[node name="Dialogue" parent="YSort/Stranger" index="2"]
+dialogues_file = "res://Dialogues/json/ToTheForest.json"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 visible = false
@@ -171,9 +186,16 @@ polygon = PoolVector2Array( 324, 464, 507, 464, 508, 479, 323, 476 )
 [node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( 99, 464, 126, 465, 128, 479, 98, 477 )
 
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PoolVector2Array( 422, -18, 144, -18, 144, -34, 425, -34 )
+
 [node name="ToMap2-3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 224, 8 )
+position = Vector2( 185, -8 )
 map_name = "Map2"
+
+[node name="CollisionShape2D" parent="ToMap2-3" index="0"]
+position = Vector2( 85.5, 0 )
 
 [node name="FromMap10" type="Position2D" parent="."]
 position = Vector2( 224, 32 )
@@ -205,4 +227,6 @@ stream = ExtResource( 12 )
 volume_db = -8.0
 autoplay = true
 
+[editable path="YSort/Stranger"]
+[editable path="ToMap2-3"]
 [editable path="ToMap3"]

@@ -15,10 +15,10 @@ func _on_LoadGame_pressed():
 			PlayerInventory.inventory = game_data["Inventory"]
 			PlayerStats.hp = game_data["Current_Hp"]
 			PlayerStats.max_hp = game_data["Max_Hp"]
-			PlayerStats.damage = game_data["Attack"]
+			PlayerStats.damage = game_data["Attack"] - 1
 			get_tree().change_scene("res://" + game_data["Map"] + ".tscn")
 			print("Data Loaded")
 
 
 func _on_NewGame_pressed():
-	get_tree().change_scene("res://" + "Map1" + ".tscn")
+	get_tree().change_scene("res://" + "Map0_home" + ".tscn")

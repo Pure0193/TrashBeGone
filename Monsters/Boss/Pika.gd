@@ -13,7 +13,7 @@ var knockback = Vector2.ZERO
 var state = IDLE
 onready var stats = $Stats
 onready var DetectionZone = $DectectionZone
-onready var _pika_drop = preload("res://Item/Key2Drop.tscn")
+onready var _pika_drop = preload("res://Item/Key4Drop.tscn")
 onready var softCollision = $SoftCollision
 onready var wanderController = $WanderingController
 onready var animationPlayer = $AnimationPlayer
@@ -68,19 +68,24 @@ func state_change(state_list):
 	return state_list.pop_front()
 
 func _on_Hurtbox_area_entered(area):
-	stats.hp -= area.damage
+	stats.hp -= PlayerStats.damage
 	knockback = area.knockback_vector * 250
 
 func _on_Stats_dead():
-	var pika_drop = _pika_drop.instance()
-	get_parent().add_child(pika_drop)
-	pika_drop.global_position = self.global_position
+	var is_key = 0
+	for item_index in PlayerInventory.inventory:
+		if "Key4" in String(PlayerInventory.inventory[item_index][0]):
+			is_key += 1
+	if is_key == 0:
+		var pika_drop = _pika_drop.instance()
+		get_parent().add_child(pika_drop)
+		pika_drop.global_position = self.global_position
 	queue_free()
 
 func _on_Hitbox_area_entered(area):
-	animationPlayer.play("PikaAttack")
+	animationState.travel("PikaAttack")
 	animationTimer.start()
 
 
 func _on_Timer_timeout():
-	animationPlayer.play("PikaIdle")
+	animationState.travel("PikaIdle")
